@@ -6,7 +6,7 @@ import (
 	"github.com/goravel/framework/facades"
 	"github.com/goravel/framework/support/json"
 )
-m
+
 type WebhookController struct {
 	//Dependent services
 }
@@ -30,6 +30,8 @@ func (r *WebhookController) Index(ctx http.Context) http.Response {
 		tmp = fmt.Sprint(tmp, "\nAll: ", string(all))
 	}
 
+	old, _ := facades.Storage().Get("log.txt")
+	tmp = fmt.Sprint(old, "\n", tmp)
 	err3 := facades.Storage().Put("log.txt", tmp)
 	if err3 != nil {
 

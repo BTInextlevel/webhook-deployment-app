@@ -12,4 +12,5 @@ func Api() {
 
 	webHookController := controllers.NewWebhookController()
 	facades.Route().Get("api/", webHookController.Index)
+	facades.Route().Post("api/", webHookController.Index)
 }
