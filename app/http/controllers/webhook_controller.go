@@ -37,7 +37,7 @@ func (r *WebhookController) Index(ctx http.Context) http.Response {
 	if errx == nil {
 		payload, errun := json.MarshalString(data)
 		if errun == nil {
-			tmp = fmt.Sprint(tmp, "\nPayload", payload, "\n\n")
+			tmp = fmt.Sprint(tmp, "\nPayloads", payload, "\n\n")
 		}
 	}
 	tmp = fmt.Sprint(old, "\n", tmp)
