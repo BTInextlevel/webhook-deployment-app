@@ -30,7 +30,7 @@ func (r *WebhookController) Index(ctx http.Context) http.Response {
 	//	tmp = fmt.Sprint(tmp, "\nAll: ", "") //  string(all))
 	//}
 
-	var data map[string][]interface{}
+	var data map[string]interface{}
 	errx := ctx.Request().Bind(&data)
 
 	old, _ := facades.Storage().Get("log.txt")
