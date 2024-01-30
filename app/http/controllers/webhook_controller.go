@@ -36,10 +36,16 @@ func (r *WebhookController) Index(ctx http.Context) http.Response {
 	old, _ := facades.Storage().Get("log.txt")
 	if errx == nil {
 		payload, errun := json.MarshalString(data)
+		fmt.Printf("")
 		if errun == nil {
 			tmp = fmt.Sprint(tmp, "\nPayloads", payload, "\n\n")
+		} else {
+			fmt.Printf("error marshal ", errun.Error())
 		}
+	} else {
+		fmt.Printf("error errx get log : ", errx.Error())
 	}
+
 	tmp = fmt.Sprint(old, "\n", tmp)
 	err3 := facades.Storage().Put("log.txt", tmp)
 	if err3 != nil {
