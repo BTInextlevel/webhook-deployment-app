@@ -19,16 +19,16 @@ func NewWebhookController() *WebhookController {
 
 func (r *WebhookController) Index(ctx http.Context) http.Response {
 	header, err := json.Marshal(ctx.Request().Headers())
-	all, err2 := json.Marshal(ctx.Request().All())
+	//all, err2 := json.Marshal(ctx.Request().All())
 
 	var tmp string
 	if err == nil {
 		tmp = fmt.Sprint("Header : ", string(header))
 	}
 
-	if err2 == nil {
-		tmp = fmt.Sprint(tmp, "\nAll: ", string(all))
-	}
+	//if err2 == nil {
+	//	tmp = fmt.Sprint(tmp, "\nAll: ", "") //  string(all))
+	//}
 
 	var data map[string][]interface{}
 	errx := ctx.Request().Bind(&data)
