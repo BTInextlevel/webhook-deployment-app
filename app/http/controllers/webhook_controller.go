@@ -41,7 +41,7 @@ func (r *WebhookController) Index(ctx http.Context) http.Response {
 		if errun == nil {
 			tmp = fmt.Sprint(tmp, "\nPayloads", payload, "\n\n")
 		} else {
-			fmt.Printf("error marshal ", errun.Error())
+			fmt.Printf("error di marshal ", errun.Error())
 		}
 	} else {
 		fmt.Printf("error errx get log : ", errx.Error())
