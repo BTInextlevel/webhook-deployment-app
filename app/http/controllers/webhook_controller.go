@@ -30,7 +30,16 @@ func (r *WebhookController) Index(ctx http.Context) http.Response {
 		tmp = fmt.Sprint(tmp, "\nAll: ", string(all))
 	}
 
+	var data map[string][]interface{}
+	errx := ctx.Request().Bind(&data)
+
 	old, _ := facades.Storage().Get("log.txt")
+	if errx == nil {
+		payload, errun := json.MarshalString(data)
+		if errun == nil {
+			tmp = fmt.Sprint(tmp, "\nPayload", payload, "\n\n")
+		}
+	}
 	tmp = fmt.Sprint(old, "\n", tmp)
 	err3 := facades.Storage().Put("log.txt", tmp)
 	if err3 != nil {
